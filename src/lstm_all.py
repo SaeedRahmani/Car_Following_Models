@@ -7,6 +7,12 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
+# Pytorch’s LSTM expects all of its inputs to be 3D tensors. 
+# The semantics of the axes of these tensors is important. 
+# The first axis is the sequence itself, the second indexes instances in the mini-batch, 
+# and the third indexes elements of the input. We haven’t discussed mini-batching, 
+# so let’s just ignore that and assume we will always have just 1 dimension on the second axis.
+
 # 1. Data Preparation
 def read_cf_pair(dt, n):
     start, end = dt.index_range[n]
